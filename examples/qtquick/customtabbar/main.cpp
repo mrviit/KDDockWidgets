@@ -31,6 +31,17 @@ public:
     {
         return QUrl("qrc:/MyTabBar.qml");
     }
+
+    QUrl titleBarFilename() const override
+    {
+        return QUrl("qrc:/MyTitleBar.qml");
+    }
+    // ViewFactory interface
+public:
+    QUrl dockwidgetFilename() const override
+    {
+        return QUrl("qrc:/MyDockWidget.qml");
+    }
 };
 
 CustomViewFactory::~CustomViewFactory() = default;
@@ -53,22 +64,22 @@ int main(int argc, char *argv[])
     KDDockWidgets::QtQuick::Platform::instance()->setQmlEngine(&appEngine);
     appEngine.load((QUrl("qrc:/main.qml")));
 
-    auto dw1 = new KDDockWidgets::QtQuick::DockWidget("Dock #1");
+//    auto dw1 = new KDDockWidgets::QtQuick::DockWidget("Dock #1");
 
-    dw1->setGuestItem(QStringLiteral("qrc:/Guest1.qml"));
+//    dw1->setGuestItem(QStringLiteral("qrc:/Guest1.qml"));
 
-    auto dw2 = new KDDockWidgets::QtQuick::DockWidget("Dock #2");
-    dw2->setGuestItem(QStringLiteral("qrc:/Guest2.qml"));
+//    auto dw2 = new KDDockWidgets::QtQuick::DockWidget("Dock #2");
+//    dw2->setGuestItem(QStringLiteral("qrc:/Guest2.qml"));
 
-    auto dw3 = new KDDockWidgets::QtQuick::DockWidget("Dock #3");
-    dw3->setGuestItem(QStringLiteral("qrc:/Guest3.qml"));
+//    auto dw3 = new KDDockWidgets::QtQuick::DockWidget("Dock #3");
+//    dw3->setGuestItem(QStringLiteral("qrc:/Guest3.qml"));
 
-    // Access the main area we created in QML with DockingArea {}
-    auto mainArea = KDDockWidgets::DockRegistry::self()->mainDockingAreas().constFirst();
-    mainArea->addDockWidget(dw1, KDDockWidgets::Location_OnTop);
+//    // Access the main area we created in QML with DockingArea {}
+//    auto mainArea = KDDockWidgets::DockRegistry::self()->mainDockingAreas().constFirst();
+//    mainArea->addDockWidget(dw1, KDDockWidgets::Location_OnTop);
 
-    dw1->addDockWidgetAsTab(dw2);
-    dw1->addDockWidgetAsTab(dw3);
+//    dw1->addDockWidgetAsTab(dw2);
+//    dw1->addDockWidgetAsTab(dw3);
 
     return app.exec();
 }
